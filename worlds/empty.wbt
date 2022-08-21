@@ -1,0 +1,196 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  basicTimeStep 1
+  coordinateSystem "NUE"
+  contactProperties [
+    DEF __5 ContactProperties {
+      coulombFriction [
+        5, 0, 0, 0, 0, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.10194832982885597 0.9837133300996885 0.14803588156014144 1.908980363282518
+  position 2.2497897293459688 0.7650627946837789 0.03729753158373669
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Robot {
+  translation 0 0.17 0
+  rotation 1 0 0 0.1735
+  children [
+    InertialUnit {
+      rotation 1 0 0 0
+      name "inertial_unit"
+    }
+    GPS {
+    }
+    Gyro {
+    }
+    Accelerometer {
+      name "acc"
+    }
+    DEF 右轮 Solid {
+      translation -0.06 -0.05 0
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            anchor -0.04 -0.07 0
+            staticFriction 100
+          }
+          device [
+            RotationalMotor {
+              name "wheel2"
+              maxVelocity 10000
+              maxTorque 1000
+            }
+          ]
+          endPoint Solid {
+            translation -0.04 -0.07 0
+            rotation 3.925223336885744e-17 0 1 1.5708003061004252
+            children [
+              Shape {
+                appearance Appearance {
+                  texture ImageTexture {
+                    url [
+                      "textures/tagged_wall.jpg"
+                    ]
+                  }
+                }
+                geometry Cylinder {
+                  height 0.05
+                  radius 0.05
+                }
+              }
+            ]
+            boundingObject Cylinder {
+              height 0.05
+              radius 0.05
+            }
+            physics Physics {
+              density 500
+            }
+          }
+        }
+        Shape {
+          appearance Appearance {
+            texture ImageTexture {
+              url [
+                "textures/stone.jpg"
+              ]
+            }
+          }
+          geometry Box {
+            size 0.03 0.14 0.03
+          }
+        }
+      ]
+      name "solid(1)"
+      physics Physics {
+        density 500
+        centerOfMass [
+          0 0 0
+        ]
+        inertiaMatrix [
+          1 1 1
+          0 0 0
+        ]
+      }
+    }
+    DEF 左轮 Solid {
+      translation 0.06 -0.05 0
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            anchor 0.04 -0.07 0
+            staticFriction 100
+          }
+          device [
+            RotationalMotor {
+              name "wheel1"
+              maxVelocity 10000
+              maxTorque 1000
+            }
+          ]
+          endPoint Solid {
+            translation 0.04 -0.07 0
+            rotation 2.1588728352871598e-16 7.85044667377149e-17 1 1.5708003061004248
+            children [
+              Shape {
+                appearance Appearance {
+                  texture ImageTexture {
+                    url [
+                      "textures/tagged_wall.jpg"
+                    ]
+                  }
+                }
+                geometry Cylinder {
+                  height 0.05
+                  radius 0.05
+                }
+              }
+            ]
+            boundingObject Cylinder {
+              height 0.05
+              radius 0.05
+            }
+            physics Physics {
+              density 500
+            }
+          }
+        }
+        Shape {
+          appearance Appearance {
+            texture ImageTexture {
+              url [
+                "textures/cubic/noon_cloudy_mountains_top.jpg"
+              ]
+            }
+          }
+          geometry Box {
+            size 0.03 0.14 0.03
+          }
+        }
+      ]
+      physics Physics {
+        density 500
+        centerOfMass [
+          0 0 0
+        ]
+        inertiaMatrix [
+          1 1 1
+          0 0 0
+        ]
+      }
+    }
+    Shape {
+      appearance Appearance {
+        texture ImageTexture {
+          url [
+            "textures/cubic/noon_cloudy_mountains_top.jpg"
+          ]
+        }
+      }
+      geometry Box {
+        size 0.2 0.1 0.1
+      }
+    }
+  ]
+  physics Physics {
+    density 500
+    centerOfMass [
+      0 0 0
+    ]
+    inertiaMatrix [
+      1 1 1
+      0 0 0
+    ]
+  }
+  controller "two222"
+}
+Floor {
+  size 20 20
+}
